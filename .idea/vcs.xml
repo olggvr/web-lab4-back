@@ -9,5 +9,7 @@
     <mapping directory="$PROJECT_DIR$/../../ProgLangs/labs/assignment-4-memory-allocator" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../ProgLangs/labs/assignment-5-sepia-filter" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../web-lab4-back" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../web-lab4-front" vcs="Git" />
   </component>
 </project>
