@@ -1,10 +1,4 @@
-
-x-common-build:
-  build:
-    context: O:\\docker_data\
-
 services:
-
   postgres:
     image: postgres:17
     environment:
@@ -27,29 +21,29 @@ services:
     depends_on:
       - postgres
     networks:
+      - infra
       - backend
-      - lab
 
   frontend:
     build: ../lab4-front
     networks:
-      - lab
+      - infra
 
   app:
     image: nginx:1.27.3
     ports:
-      - "8080:80"
+      - "8080:8000"
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - frontend
       - backend
     networks:
-      - lab
+      - infra
 
 volumes:
   pg_data:
 
 networks:
+  infra:
   backend:
-  lab:

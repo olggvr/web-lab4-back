@@ -3,14 +3,12 @@ FROM maven:3.8.8-eclipse-temurin-21 AS build
 WORKDIR /app
 
 COPY ./pom.xml ./pom.xml
-
 RUN mvn verify clean --fail-never
 
 COPY ./src ./src
-
 RUN mvn clean package
 
-FROM quay.io/wildfly/wildfly:34.0.0.Final-jdk21
+FROM quay.io/wildfly/wildfly:latest
 
 RUN wget https://jdbc.postgresql.org/download/postgresql-42.3.1.jar -O /tmp/postgresql.jar \
     && /opt/jboss/wildfly/bin/jboss-cli.sh --command="module add --name=org.postgresql --resources=/tmp/postgresql.jar --dependencies=javax.api,javax.transaction.api"
